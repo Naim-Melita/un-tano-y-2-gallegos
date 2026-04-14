@@ -7,7 +7,7 @@ import { Download, QrCode } from "lucide-react";
 import { useLocation } from "wouter";
 import QRCode from "react-qr-code";
 
-const QR_URL = "/menu";
+const QR_URL = import.meta.env.VITE_PAGE_URL+"/menu";
 
 export function QRMenu() {
   const [, navigate] = useLocation();
