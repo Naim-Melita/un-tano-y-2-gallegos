@@ -6,6 +6,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { MapPin, Phone, Users, Clock, Star, Flame, ChevronDown, AlertTriangle } from "lucide-react";
+import {QRMenu}  from "@/components/QRMenu";
 
 // CDN URLs de imágenes generadas
 const IMGS = {
@@ -575,6 +576,30 @@ function ReservaSection() {
   );
 }
 
+// ─── Sección QR y Menú ────────────────────────────────────────────────────
+function QRMenuSection() {
+  const { ref, visible } = useScrollReveal();
+  return (
+    <section ref={ref} className="py-20" style={{ background: 'oklch(0.13 0.018 45)' }}>
+      <div className="container">
+        <div className={`text-center mb-12 transition-all duration-700 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-amber-400 text-sm font-semibold tracking-widest uppercase mb-2">Menú Digital</p>
+          <h2 className="text-white text-4xl md:text-5xl font-bold" style={{ fontFamily: 'Oswald, sans-serif' }}>
+            Consultá nuestro menú completo
+          </h2>
+          <div className="flame-divider mx-auto mt-3" />
+        </div>
+
+        <div className="max-w-md mx-auto">
+          <div className={`transition-all duration-700 delay-100 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <QRMenu />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Sección CTA Final ────────────────────────────────────────────────────
 function FinalCTASection() {
   const { ref, visible } = useScrollReveal();
@@ -680,6 +705,7 @@ export default function Home() {
       <TestimonialsSection />
       <UrgencyBanner />
       <MenuSection />
+      <QRMenuSection />
       <LocationSection />
       <ReservaSection />
       <FinalCTASection />
